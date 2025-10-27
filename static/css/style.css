@@ -1,59 +1,60 @@
-
-        /* Header Section */
-        header img, .header img {
+/* --------------------------------------------------
+   HEADER SECTION
+-------------------------------------------------- */
+header img, .header img {
     height: 100px;
     width: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
-
 }
-        .header {
-            background-color: #1E3A8A;
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-            
-        }
 
-        .header img {
-            height: 100px;
-            width: 100px;
-            margin-top: 0px;
-            float: left;
-        }
+.header {
+    background-color: #1E3A8A;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
 
-        .header h1 {
-            font-size: 40px;
-            margin: 10px 0 0 0;
-        }
+.header img {
+    height: 100px;
+    width: 100px;
+    margin-top: 0px;
+    float: left;
+}
 
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            background-color: #2563EB;
-        }
+.header h1 {
+    font-size: 40px;
+    margin: 10px 0 0 0;
+}
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 25px;
-            display: inline-block;
-            font-weight: bold;
-            
-        }
+/* --------------------------------------------------
+   NAVIGATION BAR
+-------------------------------------------------- */
+.navbar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: #2563EB;
+}
 
-        .navbar a:hover {
-            background-color: #1D4ED8;
-        }
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background-color: #1D4ED8;
+}
+
 /* --------------------------------------------------
    MAIN CONTENT AREA
 -------------------------------------------------- */
 main {
     padding: 50px;
     text-align: center;
-    
 }
 
 main h2 {
@@ -97,7 +98,6 @@ button:hover {
     color: white;
     text-align: center;
     padding: 5px 0;
-    
     bottom: 0;
     width: 100%;
     font-size: 15px;
@@ -168,41 +168,27 @@ select:focus {
 }
 
 /* --------------------------------------------------
-   ERROR MESSAGES
+   FLASH / ERROR MESSAGES
 -------------------------------------------------- */
- .flashes {
-            list-style-type: none;
-            padding: 0;
-        }
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
 
-        .flashes li {
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-        }
+.flashes li {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+}
 
-        /* Flash message category styles */
-        .success {
-            background-color: #28a745;
-        }
+.success { background-color: #28a745; }
+.error { background-color: #dc3545; }
+.warning { background-color: #ffc107; color: #212529; }
+.info { background-color: #17a2b8; }
+.danger { background-color: #dc3545; }
 
-        .error {
-            background-color: #dc3545;
-        }
-
-        .warning {
-            background-color: #ffc107;
-            color: #212529;
-        }
-
-        .info {
-            background-color: #17a2b8;
-        }
-        .danger {
-            background-color: #dc3545;
-        }
 /* --------------------------------------------------
    LOGIN PAGE SPECIAL
 -------------------------------------------------- */
@@ -211,13 +197,8 @@ select:focus {
     text-align: center;
 }
 
-.login-container h2 {
-    color: #1E3A8A;
-}
-
-.login-container p {
-    text-align: left;
-}
+.login-container h2 { color: #1E3A8A; }
+.login-container p { text-align: left; }
 
 /* --------------------------------------------------
    REGISTER PAGE SPECIAL
@@ -227,133 +208,168 @@ select:focus {
 }
 
 /* --------------------------------------------------
-   RESPONSIVE DESIGN
+   GENERAL BODY + MAIN SECTION
 -------------------------------------------------- */
-@media (max-width: 900px) {
-    header img {
-        height: 60px;
-        width: 60px;
-        padding-bottom: 10px;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
 
-    nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+.main {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.main h1 {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.main p {
+    font-size: 18px;
+    margin: 20px 0;
+    color: #fff7f7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 { text-align: center; }
+
+/* --------------------------------------------------
+   DROPDOWN MENU
+-------------------------------------------------- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown button {
+    background-color: #2563EB;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.show { display: block; }
+
+main p { color: blanchedalmond; }
+
+/* --------------------------------------------------
+   🔧 UNIVERSAL RESPONSIVE IMPROVEMENTS
+-------------------------------------------------- */
+@media (max-width: 768px) {
+
+    /* Header */
+    .header {
+        padding: 15px;
         text-align: center;
     }
 
-    nav a {
+    .header img {
+        float: none;
         display: block;
-        padding: 10px 15px;
-        font-size: 15px;
+        margin: 0 auto 10px;
+        height: 70px;
+        width: 70px;
+    }
+
+    .header h1 {
+        font-size: 24px;
         margin: 5px 0;
     }
 
-    .form-container,
-    .login-container,
-    .register-container {
-        width: 90%;
-        padding: 25px;
-        margin: auto;
-    }
-
-    main {
-        padding: 25px;
-        text-align: center;
-    }
-
-    footer {
-        position: relative;
-        margin-top: 30px;
-        text-align: center;
-    }
-
-    header,
-    main,
-    footer {
+    /* Navbar */
+    .navbar {
         flex-direction: column;
         align-items: center;
     }
+
+    .navbar a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Content */
+    main {
+        padding: 20px 10px;
+    }
+
+    main h2 {
+        font-size: 22px;
+    }
+
+    main p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    /* Forms */
+    .form-container,
+    .login-container,
+    .register-container {
+        width: 95%;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    input, select, textarea, button {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    /* Dropdown */
+    .dropdown {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    /* Buttons */
+    .button, input[type="submit"], button {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 10px 0;
+        font-size: 13px;
+    }
 }
-
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-
-        /* Main Section */
-        .main {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .main h1 {
-            font-size: 36px;
-            color: #ffffff;
-        }
-
-        .main p {
-            font-size: 18px;
-            margin: 20px 0;
-            color: #fff7f7;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-h2{
-    text-align: center;
-}
-  .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown button */
-        .dropdown button {
-            background-color: #2563EB;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        /* Dropdown content (hidden by default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            border-radius: 5px;
-            z-index: 1;
-        }
-
-        /* Links inside dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Hover effect */
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* Show dropdown */
-        .show {
-            display: block;
-        }
-        main p{
-            color: blanchedalmond;
-        }
-        
-       
