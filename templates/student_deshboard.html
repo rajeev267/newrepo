@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+    h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-top: 20px;
+    }
+
+p {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 30px ;
+}
+ body{
+            background-image:linear-gradient(rgba(0, 0, 0, 0.748),rgba(0, 0, 0, 0.721)), url("{{ url_for('static', filename='photos/Cse1.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+          
+
+        }
+
+p strong {
+  color: #ffffff;
+}
+
+/* === Marks Table === */
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 30px auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #004080;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e8f0ff;
+}
+</style>
+
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <img src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo">
+        <h1>Computer Science & Engineering Department <br> Govt. Polytechnic Dwarahat (Almora)</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="dropdown">
+            <button onclick="toggleDropdown()">Menu ▼</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="/teacher_login">Login Teacher</a>
+                <a href="/student_login">Login Student</a>
+                <a href="/about">About Department</a>
+                <a href="/lab">Labs</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/gallery">Gallery</a>
+                <a href="/">Home</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+        <a href="/change_password">Change Password</a>
+        <a href="/feedback"> feedback</a>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main content -->
+    <h1>Welcome to the Student Dashboard</h1>
+
+<p ><strong style="margin-left: 400px;">Name:</strong> {{ user.name }}
+<strong style="margin-left: 200px;">Father Name:</strong> {{ user.father_name }}</p>
+<p><strong style="margin-left: 400px;">Mother Name:</strong> {{ user.mother_name }}
+<strong style="margin-left: 200px;">Roll No:</strong> {{ user.roll_no }}</p>
+<p><strong style="margin-left: 400px;">Branch:</strong> {{ user.branch }}
+<strong style="margin-left: 200px;">Email:</strong> {{ user.email }}</p>
+<p><strong style="margin-left: 400px;">Date of Birth:</strong> {{ user.dob }}</p>
+
+<table border="1" style="width:90%;margin:auto;text-align:center;border-collapse:collapse;">
+    <tr>
+        <th>Subject</th>
+        {% for i in range(1, 11) %}
+            <th>Test {{ i }}</th>
+        {% endfor %}
+    </tr>
+
+    {% for sub in subject_marks %}
+    <tr>
+        <td>{{ sub.subject_name }}</td>
+        <td>{{ sub.test1 or '-' }}</td>
+        <td>{{ sub.test2 or '-' }}</td>
+        <td>{{ sub.test3 or '-' }}</td>
+        <td>{{ sub.test4 or '-' }}</td>
+        <td>{{ sub.test5 or '-' }}</td>
+        <td>{{ sub.test6 or '-' }}</td>
+        <td>{{ sub.test7 or '-' }}</td>
+        <td>{{ sub.test8 or '-' }}</td>
+        <td>{{ sub.test9 or '-' }}</td>
+        <td>{{ sub.test10 or '-' }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+        
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

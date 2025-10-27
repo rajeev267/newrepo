@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.748), rgba(0, 0, 0, 0.721)), 
+                              url("{{ url_for('static', filename='photos/Cse1.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+
+        /* === Table === */
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            color: black;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e8f0ff;
+        }
+
+        /* === Search Bar === */
+        .search-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #004080;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-container button:hover {
+            background-color: #0059b3;
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <img src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo">
+        <h1>Computer Science & Engineering Department<br>Govt. Polytechnic Dwarahat (Almora)</h1>
+    </header>
+
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/teacher_login">Teacher Login</a>
+        <a href="/student_login">Student Login</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <h1>Student List</h1>
+
+    <!-- Search bar -->
+    <div  class="form-group"><form method="get" action="{{ url_for('student_list') }}">
+        <input type="text" name="roll_no" placeholder="Search by Roll No" value="{{ roll_no }}">
+        <input type="text" name="year" placeholder="Search by Year" value="{{ year }}">
+        <input type="text" name="batch" placeholder="Search by Batch" value="{{ batch }}">
+        <input type="text" name="father_name" placeholder="Search by Father's Name" value="{{ father_name }}">
+        <button type="submit">Search</button>
+        <a href="{{ url_for('student_list') }}" style="margin-left:10px;color: #ffffff;">Clear</a>
+    </form>
+    </div>
+
+    <!-- Student Table -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Year</th>
+            <th>Batch</th>
+            <th>Father Name</th>
+        </tr>
+
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.roll_no }}</td>
+            <td>{{ student.year }}</td>
+            <td>{{ student.batch }}</td>
+            <td>{{ student.father_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if not students %}
+        <p style="text-align:center; color:white;">No students found.</p>
+    {% endif %}
+
+    <footer>
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+        
+    </footer>
+
+</body>
+</html>

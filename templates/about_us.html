@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Department | CSE Department</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* ==== Background with dark gradient ==== */
+        body {
+            background: linear-gradient(
+                to bottom right,
+                rgba(10, 108, 199, 0.9),
+               rgba(112, 174, 118, 0.9),
+                rgba(54, 160, 97, 0.9)
+            ),
+            url("{{ url_for('static', filename='photos/class.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #00bfff;
+            margin-top: 20px;
+        }
+
+        p, li {
+            color: #f8f8f8;
+            font-size: 16px;
+        }
+
+        .content {
+            width: 85%;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px 30px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        ul {
+            margin-left: 40px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e6f0ff;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            background: linear-gradient(90deg, #001a33, #000814);
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #00bfff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <img src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo">
+        <h1>Computer Science & Engineering Department <br> Govt. Polytechnic Dwarahat (Almora)</h1>
+    </header>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="dropdown">
+            <button onclick="toggleDropdown()">Menu ▼</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="/">Home</a>
+                <a href="/teacher_login">Login Teacher</a>
+                <a href="/student_login">Login Student</a>
+                <a href="/lab">Labs</a>
+                <a href="/study_material">Study Material</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/gallery">Gallery</a>
+                <a href="/about">About Department</a>
+            </div>
+        </div>
+         <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>About the Department</h1>
+        <p>
+            The <strong>Department of Computer Science and Engineering (CSE)</strong> at 
+            <strong>Government Polytechnic Dwarahat (Almora)</strong> aims to provide 
+            high-quality education and hands-on experience in computing and information technology.
+        </p>
+
+        <h2>🏢 Department Infrastructure</h2>
+        <ul>
+            <li>🧑‍🏫 <strong>2 Modern Classrooms</strong> — equipped with smart teaching facilities.</li>
+            <li>🧮 <strong>1 Advanced Computer Lab</strong> — systems with updated software and internet access.</li>
+            <li>🔌 <strong>IoT & Embedded Systems Lab</strong> — for Arduino, sensors, and real-time IoT projects.</li>
+            <li>📡 <strong>Wi-Fi Enabled Department</strong> — for project research and development.</li>
+            <li>📚 <strong>Study Material Library</strong> — access to digital notes and PDFs.</li>
+        </ul>
+
+        <h2>🧑‍💻 Programming Languages Covered</h2>
+        <ul>
+            <li>C</li>
+            <li>C++</li>
+            <li>Java</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>.NET Framework</li>
+            <li>Android Development</li>
+            <li>RDBMS (Database Management)</li>
+            <li>IoT & Embedded C Programming</li>
+        </ul>
+
+        <h2>🎯 Vision</h2>
+        <p>
+            To become a center of excellence in computer science education and research 
+            by empowering students with technical knowledge and innovation skills.
+        </p>
+
+        <h2>🌟 Mission</h2>
+        <ul>
+            <li>Provide quality education and promote technical excellence.</li>
+            <li>Encourage innovation, teamwork, and leadership.</li>
+            <li>Prepare students to meet global industry challenges.</li>
+        </ul>
+
+        <h2>🧾 Department Facts</h2>
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Details</th>
+            </tr>
+            <tr><td>💺 Classrooms</td><td>2</td></tr>
+            <tr><td>🖥️ Computer Labs</td><td>1 (Fully Equipped)</td></tr>
+            <tr><td>🕹️ IoT & Embedded Lab</td><td>Available</td></tr>
+            <tr><td>📡 Internet Facility</td><td>24×7 Wi-Fi Access</td></tr>
+            <tr><td>👨‍🏫 Faculty Members</td><td>3+ Experienced Teachers</td></tr>
+            <tr><td>👨‍🎓 Students</td><td>120+ (All Years)</td></tr>
+        </table>
+
+        <p style="text-align:center; margin-top:30px; font-style: italic;">
+            “The Department of Computer Science & Engineering is not just about learning computers — 
+            it’s about shaping innovators for tomorrow’s digital world.”
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+        <a href="/">Home</a> |
+        <a href="/lab">Labs</a> |
+        <a href="/study_material">Study Material</a> |
+        <a href="/contact">Contact</a>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

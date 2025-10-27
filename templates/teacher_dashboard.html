@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+            color: white;
+        }
+
+        .main {
+            text-align: center;
+            margin: 40px auto;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+        }
+
+        .main h1 {
+            color: #00bfff;
+            margin-bottom: 20px;
+        }
+
+        .main a {
+            display: inline-block;
+            margin: 15px;
+            padding: 12px 25px;
+            background-color: #00bfff;
+            color: black;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .main a:hover {
+            background-color: white;
+            color: #00bfff;
+            box-shadow: 0 0 10px #00bfff;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.2);
+        }
+
+        .card h3 {
+            color: #00bfff;
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Header Section -->
+     <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    
+     <div class="navbar">
+         <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/">Home</a>
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+        
+       
+        
+        </div>
+    </div>
+    <a href="/">Home</a>
+      <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+        
+       
+        
+    </div>
+
+    
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <div class="main">
+        <h1>Welcome to the Teacher Dashboard 👨‍🏫</h1>
+        <p>Manage your students, marks, and materials here efficiently.</p>
+
+        <div>
+            <a href="{{ url_for('add_student') }}">➕ Add Student</a>
+            <a href="{{ url_for('student_list') }}">📋 View Student List</a>
+            <a href="{{ url_for('add_marks') }}">🧮 Add Marks</a>
+            
+            <a href="/view_feedback">💬 View Feedback</a>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Students</h3>
+                <p>Manage student records and details.</p>
+            </div>
+            <div class="card">
+                <h3>Marks</h3>
+                <p>Enter and update student marks.</p>
+            </div>
+            <div class="card">
+                <h3>Study Material</h3>
+                <p>Upload and manage study resources.</p>
+            </div>
+            <div class="card">
+                <h3>Feedback</h3>
+                <p>Review feedback from students.</p>
+            </div>
+
+    <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+         
+       
+        
+
+
+       
+    </div>
+   
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

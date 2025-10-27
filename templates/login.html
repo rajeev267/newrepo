@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CSE Department</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body{
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("{{ url_for('static', filename='photos/Cse1.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="login-page">
+
+    <!-- Header -->
+  <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+     <div class="navbar">
+          <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+       
+        
+        </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+        
+    </div>
+    </div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2 class="login-title">Student Login</h2>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="username">{{ form.username.label }}</label>
+                {{ form.username(class="form-control", size=32) }}
+                {% for error in form.username.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">        
+                <label for="password">{{ form.password.label }}</label>
+                {{ form.password(class="form-control", size=32) }}
+                {% for error in form.password.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.submit(class="cta-btn") }}
+            </div>
+        </form>
+    </div>
+
+     <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+        
+        
+
+
+       
+    </div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+</html>

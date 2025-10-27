@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Gallery - CSE Department</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0,0,0,0.73), rgba(0,0,0,0.73)), url("{{ url_for('static', filename='photos/event.jpg') }}");
+      background-size: cover;
+      color: white;
+      font-family: 'Times New Roman', serif;
+    }
+
+    .content {
+      position: relative;
+      width: 700px;
+      height: 400px;
+      margin: 40px auto;
+    }
+
+    .content img {
+      width: 700px;
+      height: 400px;
+      border: 2px solid black;
+      border-radius: 10px;
+      transition: opacity 0.4s;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      font-size: 30px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .arrow-btn:hover { background-color: rgba(0,0,0,0.85); }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .event-title {
+      border: solid 2px blue;
+      color: blue;
+      border-radius: 0% 15% 0% 15%;
+      background-color: rgba(204,192,20,0.307);
+      text-align: center;
+      width: 1270px;
+      padding: 10px 40px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+
+    .farewell-box {
+      border: solid 2px blue;
+      border-radius: 50%;
+      height: 90px;
+      width: 400px;
+      margin: 40px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .farewell-box h1 {
+      color: darkturquoise;
+      font-size: 28px;
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+    <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+          <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+       
+        
+        </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+        
+    </div>
+    </div>
+
+  <div class="event-title">
+    <h1 style="font-size: 60px;">Event Gallery</h1>
+  </div>
+
+  <!-- FAREWELL -->
+  <div class="farewell-box"><h1>FAREWELL 2K25</h1></div>
+  <div class="content">
+    <img id="farewell-img" src="{{ url_for('static', filename='photos/farewell.jpg') }}" alt="Farewell">
+    <button class="arrow-btn prev" id="farewell-prev">&#10094;</button>
+    <button class="arrow-btn next" id="farewell-next">&#10095;</button>
+  </div>
+
+  <!-- TEACHER'S DAY -->
+  <div class="farewell-box" style="margin-top: 50px;"><h1>TEACHER'S DAY</h1></div>
+  <div class="content">
+    <img id="teacher-img" src="{{ url_for('static', filename='photos/teacher1.jpg') }}" alt="Teacher's Day">
+    <button class="arrow-btn prev" id="teacher-prev">&#10094;</button>
+    <button class="arrow-btn next" id="teacher-next">&#10095;</button>
+  </div>
+
+  <!-- FRESHER'S -->
+  <div class="farewell-box"style="margin-top: 50px;"><h1>FRESHER'S PARTY</h1></div>
+  <div class="content">
+    <img id="fresher-img" src="{{ url_for('static', filename='photos/fresher1.jpg') }}" alt="Fresher's Party">
+    <button class="arrow-btn prev" id="fresher-prev">&#10094;</button>
+    <button class="arrow-btn next" id="fresher-next">&#10095;</button>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+  </div>
+
+  <script>
+    // Function to make independent sliders
+    function createSlider(imgId, prevId, nextId, imageArray, interval = 4000) {
+      const img = document.getElementById(imgId);
+      const prev = document.getElementById(prevId);
+      const next = document.getElementById(nextId);
+      let index = 0;
+
+      function changeImage(nextDir = true) {
+        index = nextDir ? (index + 1) % imageArray.length : (index - 1 + imageArray.length) % imageArray.length;
+        img.style.opacity = 0;
+        setTimeout(() => {
+          img.src = imageArray[index];
+          img.style.opacity = 1;
+        }, 300);
+      }
+
+      let autoChange = setInterval(changeImage, interval);
+
+      next.addEventListener('click', () => {
+        changeImage(true);
+        resetTimer();
+      });
+      prev.addEventListener('click', () => {
+        changeImage(false);
+        resetTimer();
+      });
+
+      function resetTimer() {
+        clearInterval(autoChange);
+        autoChange = setInterval(changeImage, interval);
+      }
+    }
+
+    // Initialize 3 sliders
+    createSlider(
+      "farewell-img",
+      "farewell-prev",
+      "farewell-next",
+      [
+        "{{ url_for('static', filename='photos/farewell.jpg') }}",
+        "{{ url_for('static', filename='photos/farewell1.jpg') }}",
+        "{{ url_for('static', filename='photos/fresher3.jpg') }}"
+      ]
+    );
+
+    createSlider(
+      "teacher-img",
+      "teacher-prev",
+      "teacher-next",
+      [
+        "{{ url_for('static', filename='photos/teachers0.jpg') }}",
+        "{{ url_for('static', filename='photos/cake.jpg') }}",
+        "{{ url_for('static', filename='photos/teachers1.jpg') }}"
+      ]
+    );
+
+    createSlider(
+      "fresher-img",
+      "fresher-prev",
+      "fresher-next",
+      [
+        "{{ url_for('static', filename='photos/fresher.jpg') }}",
+        "{{ url_for('static', filename='photos/fresher1.jpg') }}",
+        "{{ url_for('static', filename='photos/fresher2.jpg') }}"
+      ]
+    );
+  </script>
+</body>
+</html>

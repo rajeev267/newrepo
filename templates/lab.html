@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE Department Labs</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url("{{ url_for('static', filename='photos/elearning.jpg') }}");
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* === Lab Grid === */
+    .lab-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .lab-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      color: #000;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .lab-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .lab-card h3 {
+      color: #004080;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .lab-card p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .lab-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .lab-card ul li::before {
+      content: "✔️ ";
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      color: white;
+      margin-top: 40px;
+      padding: 20px 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    footer a {
+      color: #cce6ff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+    <!--Header Section -->
+     <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    
+     <div class="navbar">
+         <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="/">Home</a>
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+        
+       
+        
+        </div>
+    </div>
+    <a href="/">Home</a>
+      <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+        
+       
+        
+    </div>
+
+  <h2>Our Department Laboratories</h2>
+
+  <!-- Lab Grid -->
+  <div class="lab-container">
+
+    <div class="lab-card">
+      <h3>C Programming Lab</h3>
+      <p><strong>Purpose:</strong> Learn programming fundamentals and problem-solving using C.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>Loops, conditionals, functions</li>
+        <li>Arrays, strings, and pointers</li>
+        <li>File handling</li>
+      </ul>
+      <p><strong>Tools Used:</strong> GCC / Code::Blocks</p>
+    </div>
+
+    <div class="lab-card">
+      <h3>C++ Programming Lab</h3>
+      <p><strong>Purpose:</strong> Understand Object-Oriented Programming principles using C++.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>Classes, objects, and inheritance</li>
+        <li>Polymorphism and encapsulation</li>
+        <li>File handling and templates</li>
+      </ul>
+      <p><strong>Tools Used:</strong> Code::Blocks / Dev C++</p>
+    </div>
+
+    <div class="lab-card">
+      <h3>Java Programming Lab</h3>
+      <p><strong>Purpose:</strong> Build console and GUI-based programs using Java.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>OOP concepts and exception handling</li>
+        <li>GUI using Swing/JavaFX</li>
+        <li>Database connectivity (JDBC)</li>
+      </ul>
+      <p><strong>Tools Used:</strong> NetBeans / IntelliJ IDEA</p>
+    </div>
+
+    <div class="lab-card">
+      <h3>Web Development Lab</h3>
+      <p><strong>Purpose:</strong> Learn to design and build interactive websites.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>HTML for structure</li>
+        <li>CSS for styling</li>
+        <li>JavaScript for interactivity</li>
+      </ul>
+      <p><strong>Tools Used:</strong> VS Code / Browser Dev Tools</p>
+    </div>
+
+    <div class="lab-card">
+      <h3>.NET Programming Lab</h3>
+      <p><strong>Purpose:</strong> Learn to develop Windows and web applications using .NET.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>Basics of C# programming</li>
+        <li>Form and web-based applications</li>
+        <li>Database connectivity via ADO.NET</li>
+      </ul>
+      <p><strong>Tools Used:</strong> Visual Studio</p>
+    </div>
+
+    <div class="lab-card">
+      <h3>Android Development Lab</h3>
+      <p><strong>Purpose:</strong> Create mobile applications for Android.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>UI design and layout creation</li>
+        <li>Activity lifecycle</li>
+        <li>Database and API integration</li>
+      </ul>
+      <p><strong>Tools Used:</strong> Android Studio</p>
+    </div>
+
+    <div class="lab-card">
+      <h3>RDBMS Lab</h3>
+      <p><strong>Purpose:</strong> Understand relational database systems and SQL.</p>
+      <p><strong>Students Learn:</strong></p>
+      <ul>
+        <li>Database creation and management</li>
+        <li>SQL queries (SELECT, UPDATE, etc.)</li>
+        <li>ER diagrams and normalization</li>
+      </ul>
+      <p><strong>Tools Used:</strong> MySQL / Oracle</p>
+    </div>
+    <div class="lab-card">
+  <h3>IoT (Internet of Things) Lab</h3>
+  <p><strong>Purpose:</strong> To provide hands-on experience in building smart systems that connect hardware devices with software and the internet.</p>
+  <p><strong>Students Learn:</strong></p>
+  <ul>
+    <li>Working with microcontrollers (Arduino, NodeMCU, ESP32)</li>
+    <li>Sensor and actuator interfacing</li>
+    <li>Data transmission using Wi-Fi, Bluetooth, or MQTT</li>
+    <li>IoT-based project development (smart home, automation, etc.)</li>
+  </ul>
+  <p><strong>Tools Used:</strong> Arduino IDE / Node-RED / Blynk / MQTT Broker</p>
+</div>
+
+
+  </div>
+
+ 
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+ <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+         
+       
+        
+
+
+       
+    </div>
+
+</body>
+</html>

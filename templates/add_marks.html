@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Marks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <img src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1>Computer Science & Engineering Department <br>
+            Govt. Polytechnic Dwarahat (Almora)
+        </h1>
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="dropdown">
+            <button onclick="toggleDropdown()">Menu ▼</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="/">Home</a>
+                <a href="/teacher_login">Login Teacher</a>
+                <a href="/student_login">Login Student</a>
+                <a href="/about">About Department</a>
+                <a href="/lab">Labs</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/gallery">Gallery</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- Add Marks Form -->
+    <div class="register-container">
+        <h2 class="register-title">Add Marks</h2>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label>{{ form.roll_no.label }}</label>
+                {{ form.roll_no(class="form-control", placeholder="Enter Roll Number") }}
+                {% for error in form.roll_no.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.subject_name.label }}</label>
+                {{ form.subject_name(class="form-control", placeholder="Enter Subject Name") }}
+                {% for error in form.subject_name.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Separate Test Marks Fields -->
+            <div class="form-group">
+                <label>{{ form.test1.label }}</label>
+                {{ form.test1(class="form-control", placeholder="Enter Test 1 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test2.label }}</label>
+                {{ form.test2(class="form-control", placeholder="Enter Test 2 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test3.label }}</label>
+                {{ form.test3(class="form-control", placeholder="Enter Test 3 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test4.label }}</label>
+                {{ form.test4(class="form-control", placeholder="Enter Test 4 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test5.label }}</label>
+                {{ form.test5(class="form-control", placeholder="Enter Test 5 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test6.label }}</label>
+                {{ form.test6(class="form-control", placeholder="Enter Test 6 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test7.label }}</label>
+                {{ form.test7(class="form-control", placeholder="Enter Test 7 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test8.label }}</label>
+                {{ form.test8(class="form-control", placeholder="Enter Test 8 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test9.label }}</label>
+                {{ form.test9(class="form-control", placeholder="Enter Test 9 Marks") }}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.test10.label }}</label>
+                {{ form.test10(class="form-control", placeholder="Enter Test 10 Marks") }}
+            </div>
+
+            <p>{{ form.submit(class="btn-submit") }}</p>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

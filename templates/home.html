@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Department - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    
+
+    <style>
+        body{
+            background-image:linear-gradient(rgba(0, 0, 0, 0.748),rgba(0, 0, 0, 0.721)), url("{{ url_for('static', filename='photos/Cse1.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+          
+
+        }
+        img{
+            float: left;
+            border: black 2px solid;
+            border-radius: 5%;
+
+          margin-top: 0px;
+          height: 300px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--Header Section -->
+     <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    
+     <div class="navbar">
+         <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+        
+       
+        
+        </div>
+    </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/feedback"> feedback</a>
+        
+       
+        
+    </div>
+
+    <!-- Main Content -->
+       {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+    <div class="main">
+        <h1 id="welcome" style="font-family: 'Times New Roman', Times, serif;">Welcome to the CSE Department</h1>
+        <div class="content">
+            <img id="slider" src="{{ url_for('static', filename='photos/computer.jpg') }}" alt="CSE Department Image">
+        <p style="color: rgb(22, 180, 164);" >The Computer Science and Engineering (CSE) Department at Government Polytechnic Dwarahat is dedicated to providing quality technical education and practical knowledge in the field of computing.<br>
+            The department focuses on developing strong fundamentals in programming M, andachine Learning. Equipped with advanced computer labs, high-speed internet, and experienced faculty, the CSE department ensures students gain hands-on experience and industry-relevant skills. Regular workshops, seminars, and proje algorithms, databases, networking, and modern technologies like Artificial Intelligencect-based learning help students stay updated with the latest trends in technology. <br>
+             </p>
+
+        
+        
+            
+
+        </div>
+    </div>
+
+  
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+ <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+         
+       
+        
+
+
+       
+    </div>
+
+
+    
+
+</body>
+</html>  

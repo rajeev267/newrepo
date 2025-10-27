@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+     <div class="navbar">
+          <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+       
+        
+        </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+        
+    </div>
+    </div>
+     <!-- Registration Form -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+     <div class="register-container">
+        <h2 class="register-title">Add Teacher</h2>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label>{{ form.username.label }}</label>
+                {{ form.username(class="form-control", size=32) }}
+                {% for error in form.username.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.password.label }}</label>
+                {{ form.password(class="form-control", size=32) }}
+                {% for error in form.password.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.name.label }}</label>
+                {{ form.name(class="form-control", size=32) }}
+                {% for error in form.name.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    </div>
+    
+     <!-- End of Registration Form -->
+ <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+         
+        <a href="/">Home</a>
+        <a href="/contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="/contect">contect us</a>
+        
+
+
+       
+    </div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

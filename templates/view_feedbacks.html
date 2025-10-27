@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+     <style>
+      body{
+            background-image:linear-gradient(rgba(0, 0, 0, 0.748),rgba(0, 0, 0, 0.721)), url("{{ url_for('static', filename='photos/Cse1.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+          
+
+        }
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin: 30px auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #004080;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e8f0ff;
+}
+</style>
+</head>
+<body>
+     <!-- Header Section -->
+    <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+    <!-- Navigation Bar -->
+     <div class="navbar">
+          <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+       
+        
+        </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+
+
+
+    </div>
+    </div>
+    <!-- Main Content -->
+      <h2>Feedbacks from Students</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+        {% for fb in feedbacks %}
+        <tr>
+            <td>{{ fb.id }}</td>
+            <td>{{ fb.name }}</td>
+            <td>{{ fb.email }}</td>
+            <td>{{ fb.message }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+        
+        
+        
+    </div>
+     <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+
+        
+        
+
+
+       
+    </div>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

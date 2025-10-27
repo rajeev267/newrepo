@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - CSE Department</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+    body{
+            background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("{{ url_for('static', filename='photos/Cse1.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+    }
+    img{
+        float: left;
+        margin-top: 0px;
+        }
+        
+</style>
+</head>
+<body>
+
+    <!-- Header -->
+   
+
+  
+ 
+    <div class="header">
+        <img  src="{{ url_for('static', filename='photos/logo.jpg') }}" alt="CSE Logo"> 
+        <h1 >Computer Science & Engineering Department <br>
+                govt.polytechnic Dwarahat(Almora)</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+     <div class="navbar">
+          <div class="dropdown">
+        <button onclick="toggleDropdown()">Menu ▼</button>
+        <div id="myDropdown" class="dropdown-content">
+           <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+       
+        
+        </div>
+        <a href="/teacher_login">Login Teacher</a>
+        <a href="/student_login">Login Student</a>
+        <a href="/about">About Department</a>
+        <a href="/lab">Labs</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/">Home</a>
+        
+    </div>
+    </div>
+      <!-- Registration Form -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+    <div class="register-container">
+        <h2 class="register-title">Student Registration</h2>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label>{{ form.username.label }}</label>
+                {{ form.username(class="form-control", size=32) }}
+                {% for error in form.username.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.password.label }}</label>
+                {{ form.password(class="form-control", size=32) }}
+                {% for error in form.password.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.name.label }}</label>
+                {{ form.name(class="form-control", size=32) }}
+                {% for error in form.name.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.father_name.label }}</label>
+                {{ form.father_name(class="form-control", size=32) }}
+                {% for error in form.father_name.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.mother_name.label }}</label>
+                {{ form.mother_name(class="form-control", size=32) }}
+                {% for error in form.mother_name.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.dob.label }}</label>
+                {{ form.dob(class="form-control", size=32) }}
+                {% for error in form.dob.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.age.label }}</label>
+                {{ form.age(class="form-control") }}
+                {% for error in form.age.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.roll_no.label }}</label>
+                {{ form.roll_no(class="form-control", size=32) }}
+                {% for error in form.roll_no.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.year.label }}</label>
+                {{ form.year(class="form-control") }}
+                {% for error in form.year.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.batch.label }}</label>
+                {{ form.batch(class="form-control") }}
+                {% for error in form.batch.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.mobile.label }}</label>
+                {{ form.mobile(class="form-control", size=32) }}
+                {% for error in form.mobile.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>{{ form.email.label }}</label>
+                {{ form.email(class="form-control", size=32) }}
+                {% for error in form.email.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+             <div class="form-group">
+                <label >{{ form.branch.label}}</label>
+                {{ form.branch(class="form-control") }}
+                {% for error in form.branch.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn-submit") }}
+            </div>
+        </form>
+    </div>
+
+ <!-- Footer -->
+     <div class="footer">
+        <p>&copy; 2025 CSE Department, Government Polytechnic Dwarahat. All rights reserved.</p>
+        
+
+
+       
+    </div>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+</html>
+
