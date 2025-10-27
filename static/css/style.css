@@ -229,16 +229,25 @@ select:focus {
 /* --------------------------------------------------
    RESPONSIVE DESIGN
 -------------------------------------------------- */
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     header img {
         height: 60px;
         width: 60px;
         padding-bottom: 10px;
     }
 
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
     nav a {
+        display: block;
         padding: 10px 15px;
         font-size: 15px;
+        margin: 5px 0;
     }
 
     .form-container,
@@ -246,15 +255,25 @@ select:focus {
     .register-container {
         width: 90%;
         padding: 25px;
+        margin: auto;
     }
 
     main {
         padding: 25px;
+        text-align: center;
     }
 
     footer {
         position: relative;
         margin-top: 30px;
+        text-align: center;
+    }
+
+    header,
+    main,
+    footer {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
